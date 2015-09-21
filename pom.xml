@@ -3,12 +3,18 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.daedafusion</groupId>
-    <artifactId>service-discovery</artifactId>
+    <artifactId>service-discovery-parent</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
 
     <name>DaedaFusion Service Discovery</name>
     <url>http://daedafusion.com</url>
     <description>A Service Discovery library that extends Apache Curator with etcd support</description>
+
+    <modules>
+        <module>service-discovery</module>
+        <module>http-dclient</module>
+    </modules>
 
     <licenses>
         <license>
@@ -47,12 +53,22 @@
         <dependencies>
             <dependency>
                 <groupId>com.daedafusion</groupId>
+                <artifactId>service-discovery</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.daedafusion</groupId>
                 <artifactId>configuration-core</artifactId>
                 <version>1.0</version>
             </dependency>
             <dependency>
                 <groupId>com.daedafusion</groupId>
                 <artifactId>jetcd</artifactId>
+                <version>1.0</version>
+            </dependency>
+            <dependency>
+                <groupId>com.daedafusion</groupId>
+                <artifactId>crypto</artifactId>
                 <version>1.0</version>
             </dependency>
 
@@ -65,6 +81,36 @@
                 <groupId>javax.servlet</groupId>
                 <artifactId>servlet-api</artifactId>
                 <version>2.5</version>
+            </dependency>
+            <dependency>
+                <groupId>org.glassfish.jersey.media</groupId>
+                <artifactId>jersey-media-json-jackson</artifactId>
+                <version>2.16</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>4.3.4</version>
+            </dependency>
+            <dependency>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-server</artifactId>
+                <version>9.2.2.v20140723</version>
+            </dependency>
+            <dependency>
+                <groupId>org.glassfish.jersey.containers</groupId>
+                <artifactId>jersey-container-jetty-servlet</artifactId>
+                <version>2.16</version>
+            </dependency>
+            <dependency>
+                <groupId>org.glassfish.jersey.core</groupId>
+                <artifactId>jersey-server</artifactId>
+                <version>2.16</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-log4j12</artifactId>
+                <version>1.7.10</version>
             </dependency>
 
             <dependency>
@@ -81,23 +127,6 @@
     </dependencyManagement>
 
     <dependencies>
-        <dependency>
-            <groupId>com.daedafusion</groupId>
-            <artifactId>configuration-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.daedafusion</groupId>
-            <artifactId>jetcd</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.curator</groupId>
-            <artifactId>curator-x-discovery</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>servlet-api</artifactId>
-            <scope>provided</scope>
-        </dependency>
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
