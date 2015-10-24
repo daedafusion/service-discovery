@@ -7,7 +7,7 @@
     <parent>
         <groupId>com.daedafusion</groupId>
         <artifactId>service-discovery-parent</artifactId>
-        <version>1.0</version>
+        <version>1.1-SNAPSHOT</version>
     </parent>
 
     <artifactId>http-dclient</artifactId>
