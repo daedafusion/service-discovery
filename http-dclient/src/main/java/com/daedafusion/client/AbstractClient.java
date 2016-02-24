@@ -1,5 +1,6 @@
 package com.daedafusion.client;
 
+import com.daedafusion.configuration.Configuration;
 import com.daedafusion.crypto.Crypto;
 import com.daedafusion.crypto.CryptoFactory;
 import com.daedafusion.discovery.Discovery;
@@ -52,7 +53,7 @@ public abstract class AbstractClient implements Closeable
     {
         this.serviceName = serviceName;
 
-        if(url == null)
+        if(url == null && Configuration.getInstance().getBoolean("useDiscovery", true))
         {
             try
             {
@@ -64,6 +65,10 @@ public abstract class AbstractClient implements Closeable
                 log.error("", e);
                 throw new RuntimeException(e);
             }
+        }
+        else if(url == null)
+        {
+            baseUrl = URI.create(Configuration.getInstance().getString(String.format("%sUrl", serviceName), null));
         }
         else
         {
